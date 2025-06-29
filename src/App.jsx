@@ -46,7 +46,7 @@ const App = () => {
 
     setLoader(true)
 
-    let response = await fetch(URL, {
+    let response = await fetch(`${import.meta.env.VITE_API_KEY}`, {
       method: "POST",
       body: JSON.stringify(payload)
     });
