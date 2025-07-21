@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { URL } from './constant';
 import RecentSearch from './components/RecentSearch';
 import QuestionAnswer from './components/QuestionAnswer';
 
