@@ -9,8 +9,7 @@ const App = () => {
   const [selectedHistory, setSelectedHistory] = useState('');
   const scrollToAns = useRef();
   const [loader, setLoader] = useState(false);
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') || 'dark'
-  );
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') || 'dark');
 
   const askQuestion = async () => {
     if (!question && !selectedHistory) return false;
