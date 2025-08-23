@@ -1,28 +1,46 @@
+import React from 'react';
 import Answer from '../components/Answer';
-const QuestionAnswer = ({item, index}) => {
+
+const QuestionAnswer = ({ item, index }) => {
   return (
-    <>
-      <div key={index + Math.random()} className={item.type == 'q' ?
-        'flex justify-end' : ''
-      }>
-        {
-          item.type == 'q' ?
-
-            <li key={index + Math.random()} className=' text-right p-1 border-8 dark:border-zinc-700 dark:bg-zinc-700 bg-red-100 border-red-100 rounded-tl-3xl rounded-br-3xl rounded-bl-3xl w-fit'>
-              <Answer ans={item.text} totalResult={1} index={index} type={item.type} />
+    <div
+      key={index}
+      className={item.type === "q" ? "flex justify-end" : "flex justify-start"}
+    >
+      {item.type === "q" ? (
+        <div
+          key={`q-${index}`}
+          className="max-w-[75%] p-3 rounded-2xl w-fit text-white shadow-md
+          bg-blue-500 dark:bg-zinc-700"
+        >
+          <Answer
+            ans={item.text}
+            totalResult={1}
+            index={index}
+            type={item.type}
+          />
+        </div>
+      ) : (
+        <ul className="space-y-2 max-w-[80%]">
+          {item.text.map((ansItem, ansIndex) => (
+            <li
+              key={`a-${index}-${ansIndex}`}
+              className="p-3 rounded-2xl w-fit shadow-md bg-red-500 text-zinc-600
+                    dark:bg-zinc-800 dark:text-gray-100">
+              <Answer
+                ans={ansItem}
+                totalResult={item.text.length}
+                type={item.type}
+                index={ansIndex}
+              />
             </li>
-            :
+          ))}
+        </ul>
+      )
+      }
+    </div>
+  );
+};
 
-            item.text.map((ansItem, ansIndex) => (
-              <li key={index + Math.random()} className=' text-left p-1'>
-                <Answer ans={ansItem} totalResult={item.length}
-                  type={item.type} index={ansIndex} />
-              </li>
-            ))
-        }
-      </div>
-    </>
-  )
-}
+export default QuestionAnswer;
 
-export default QuestionAnswer
